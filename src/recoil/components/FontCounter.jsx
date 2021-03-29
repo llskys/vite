@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-29 17:32:37
- * @LastEditTime: 2021-03-29 18:04:51
+ * @LastEditTime: 2021-03-29 18:21:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite\vite-project\src\recoil\components\CharacterCounter.js
@@ -39,8 +39,11 @@ const fontSizeLabelState = selector({
 
     return `${fontSize}${unit}`;
   },
+  // set: ({set}, newValue) => set(Atom, newValue计算的值)
 });
 
+
+// useRecoilValue 可以用来获取selector返回的值，不用useRecoilState来获取这个值，因为选择器不可写
 function FontCounter() {
   const fontSizeLabel = useRecoilValue(fontSizeLabelState);
   return (
