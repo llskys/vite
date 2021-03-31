@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-03-29 17:32:37
- * @LastEditTime: 2021-03-29 18:21:12
+ * @LastEditTime: 2021-03-30 10:25:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite\vite-project\src\recoil\components\CharacterCounter.js
  */
 import React from 'react';
-import { useRecoilState, useRecoilValue, selector } from 'recoil';
+import { useRecoilState, useRecoilValue, useRecoilValueLoadable, useSetRecoilState, useRecoilCallback, selector } from 'recoil';
 import { fontSizeState } from '../store'
 
 // useRecoilState 使用Atom返回的state数据，可以多个组件同时订阅，更新同时进行
@@ -42,7 +42,6 @@ const fontSizeLabelState = selector({
   // set: ({set}, newValue) => set(Atom, newValue计算的值)
 });
 
-
 // useRecoilValue 可以用来获取selector返回的值，不用useRecoilState来获取这个值，因为选择器不可写
 function FontCounter() {
   const fontSizeLabel = useRecoilValue(fontSizeLabelState);
@@ -54,5 +53,42 @@ function FontCounter() {
     </div>
   );
 }
+
+// useRecoilValueLoadable 用来异步获取selector返回的值
+// const queryDataFn = selector({
+//   key: "data",
+//   get: async () => {
+//     const response = await queryData();
+//     return response.data;
+//   }
+// });
+// const dataLoadable = useRecoilValueLoadable(queryDataFn);
+
+// useSetRecoilState 数据流的变化不会导致组件 Rerender，只写不读
+// const setTodoList = useSetRecoilState(todoListState);
+// const addItem = () => {
+//   setTodoList((oldTodoList) => [
+//     ...oldTodoList,
+//     {
+//       id: getId(),
+//       text: inputValue,
+//       isComplete: false,
+//     },
+//   ]);
+// };
+
+// useRecoilCallback 只读不订阅，数据变化不会Rerender
+// const itemsInCart = atom({
+//   key: "itemsInCart",
+//   default: 0,
+// });
+
+// function CartInfoDebug() {
+//   const logCartItems = useRecoilCallback(async ({ getPromise }) => {
+//     const numItemsInCart = await getPromise(itemsInCart);
+
+//     console.log("Items in cart: ", numItemsInCart);
+//   });
+// }
 
 export default FontCounter
