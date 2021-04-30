@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "babelTest": "node ./node_modules/@babel/cli/bin/babel.js src/test.js --out-dir lib"
   },
   "dependencies": {
     "react": "^17.0.0",
