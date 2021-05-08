@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-08 16:19:53
- * @LastEditTime: 2021-05-08 17:04:38
+ * @LastEditTime: 2021-05-08 17:36:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite-study\src\utils\util.js
@@ -10,7 +10,7 @@
 //PromiseA+规定的三种状态
 const [PENDING,FULFILLED,REJECTED] = ['pending','fulfilled','rejected'] 
 
-class MyPromise {
+export default class MyPromise {
   // 构造方法接收一个回调
   constructor(executor) {
     this._status = PENDING     // Promise状态

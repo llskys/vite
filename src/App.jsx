@@ -15,7 +15,7 @@ function App() {
       }, 1000);
     })
     p1.then(res => console.log('111', res))
-    p1.then(res => console.log('222', res))
+    // p1.then(res => console.log('222', res))
   }
   return (
     <>
