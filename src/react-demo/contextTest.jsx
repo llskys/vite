@@ -8,12 +8,12 @@ function ContextTest1() {
         setTheme(theme === 'yellow' ? 'red' : 'yellow')
     }
     return (
-      <>
-        <Provider value={{ theme, toggleTheme }}>
-          <ContextConsumer />
-          <ContextConsumerAnother />
-        </Provider>
-      </>
+        <>
+            <Provider value={{ theme, toggleTheme }}>
+                <ContextConsumer />
+                <ContextConsumerAnother />
+            </Provider>
+        </>
     )
 }
 
@@ -62,13 +62,13 @@ class ContextTest2 extends Component {
     }
 
     render() {
-      const { value } = this.state
-      return (
-        <Provider value={value}>
-          <button onClick={this.changeValue}>change context2 value</button>
-          <ContextConsumer2 />
-        </Provider>
-      );
+        const { value } = this.state
+        return (
+            <Provider value={value}>
+                <button onClick={this.changeValue}>change context2 value</button>
+                <ContextConsumer2 />
+            </Provider>
+        );
     }
   }
 
