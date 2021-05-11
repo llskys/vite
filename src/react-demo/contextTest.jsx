@@ -13,7 +13,6 @@ export default function ContextTest() {
                 <ContextConsumer1 />
                 <ContextConsumer2 />
                 <ContextConsumer3 />
-                <ContextConsumer4 />
             </Provider>
         </>
     )
@@ -34,22 +33,7 @@ function ContextConsumer1() {
     );
 }
 
-function ContextConsumer2() {
-    return (
-        <Consumer>
-        {
-            ({theme, toggleTheme}) => (
-                <>
-                    <button onClick={toggleTheme}>change</button>
-                    <div style={{background:theme}}>{theme}</div>
-                </>
-            )
-        }
-        </Consumer>
-    );
-}
-
-class ContextConsumer3 extends Component {
+class ContextConsumer2 extends Component {
     static contextType = GlobalContext;
 
     render() {
@@ -72,7 +56,7 @@ class ContextConsumer3 extends Component {
     }
 }
 
-function ContextConsumer4() {
+function ContextConsumer3() {
     const { theme, toggleTheme } = useContext(GlobalContext)
     return (
         <>
