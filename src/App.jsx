@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import RecoilDemo from './recoil'
-import { ContextTest1, ContextTest2, ContextTest3, Geti18n, LifeCycleContainer, PersonalInfoComponent, SetState } from './react-demo'
+import { ContextTest, Geti18n, LifeCycleContainer, PersonalInfoComponent, SetState } from './react-demo'
 // import './App.css'
 import MyPromise from './utils/util'
 
@@ -19,9 +19,7 @@ function App() {
       {/* <RecoilDemo /> */}
       {/* <Geti18n /> */}
       {/* <button onClick={testMyPromise}>TEST</button> */}
-      <ContextTest1 />
-      {/* <ContextTest2 /> */}
-      {/* <ContextTest3 /> */}
+      <ContextTest />
     </>
   )
 }

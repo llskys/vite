@@ -1,8 +1,8 @@
 import React, { Component, createContext, useState, useContext } from 'react'
-const GlobalContext = createContext();
+const GlobalContext = createContext(1);
 const { Provider, Consumer } = GlobalContext
 
-function ContextTest1() {
+export default function ContextTest() {
     const [theme,setTheme] = useState('yellow')
     const toggleTheme = () => {
         setTheme(theme === 'yellow' ? 'red' : 'yellow')
@@ -10,14 +10,16 @@ function ContextTest1() {
     return (
         <>
             <Provider value={{ theme, toggleTheme }}>
-                <ContextConsumer />
-                <ContextConsumerAnother />
+                <ContextConsumer1 />
+                <ContextConsumer2 />
+                <ContextConsumer3 />
+                <ContextConsumer4 />
             </Provider>
         </>
     )
 }
 
-function ContextConsumer() {
+function ContextConsumer1() {
     return (
         <Consumer>
         {
@@ -32,7 +34,7 @@ function ContextConsumer() {
     );
 }
 
-function ContextConsumerAnother() {
+function ContextConsumer2() {
     return (
         <Consumer>
         {
@@ -47,32 +49,7 @@ function ContextConsumerAnother() {
     );
 }
 
-class ContextTest2 extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            value: 1
-        }
-    }
-
-    changeValue = () =>{
-        this.setState({
-            value: this.state.value + 1
-        })
-    }
-
-    render() {
-        const { value } = this.state
-        return (
-            <Provider value={value}>
-                <button onClick={this.changeValue}>change context2 value</button>
-                <ContextConsumer2 />
-            </Provider>
-        );
-    }
-  }
-
-class ContextConsumer2 extends Component {
+class ContextConsumer3 extends Component {
     static contextType = GlobalContext;
 
     render() {
@@ -80,25 +57,28 @@ class ContextConsumer2 extends Component {
             <>
                 <Consumer>
                 {
-                    context => <div>{context}</div>
+                    ({theme, toggleTheme}) => (
+                        <>
+                            <button onClick={toggleTheme}>change</button>
+                            <div style={{background:theme}}>{theme}</div>
+                        </>
+                    )
                 }
                 </Consumer>
-                <div>{this.context}</div>
+                <div style={{background:this.context.theme}}>{this.context.theme}</div>
             </>
+            
         );
     }
 }
 
-function ContextTest3() {
-    const data = useContext(GlobalContext)
-    const [value, setValue] = useState(data||1)
+function ContextConsumer4() {
+    const { theme, toggleTheme } = useContext(GlobalContext)
     return (
         <>
-            <button onClick={()=>setValue(c=>c+1)}>change context3 value</button>
-            <div>{value}</div>
+            <button onClick={toggleTheme}>change</button>
+            <div style={{background:theme}}>{theme}</div>
         </>
     )
 }
 
-  
-export { ContextTest1, ContextTest2, ContextTest3 }
