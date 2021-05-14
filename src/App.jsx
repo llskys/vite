@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import RecoilDemo from './recoil'
 import { ContextTest, Geti18n, LifeCycleContainer, PersonalInfoComponent, SetState } from './react-demo'
 // import './App.css'
-import MyPromise from './utils/util'
+import MyPromise from './utils/myPromise'
 
 function App() {
   const testMyPromise = () =>{

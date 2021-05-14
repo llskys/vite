@@ -8,6 +8,8 @@
     "babelTest": "node ./node_modules/@babel/cli/bin/babel.js src/test.js --out-dir lib"
   },
   "dependencies": {
+    "crypto-js": "^4.0.0",
+    "moment": "^2.29.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "recoil": "^0.1.3",
