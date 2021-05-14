@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 11:07:16
- * @LastEditTime: 2021-05-14 11:19:46
+ * @LastEditTime: 2021-05-14 11:23:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite-study\src\utils\util.js
@@ -22,7 +22,7 @@ function getBase64(word) {
     return CryptoJS.enc.Base64.stringify(str)
 }
 
-export default function addWaterMark(url, text) {
+export function addWaterMark(url, text) {
     //--要加水印的文本设为数组，按序传入需要展示的文字信息
     const arr = []
     if (text) {
@@ -154,3 +154,38 @@ export const countDown = (time, step = 1) => {
         }, step * 1000)
     }
 }
+
+/**
+ * 打印方法
+ *
+ */
+export const printIframe = {
+    create: (path = '') => {
+        const url = path;
+        // 判断iframe是否存在，不存在则创建iframe
+        let iframe = document.getElementById('print-iframe');
+        if (!iframe) {
+            iframe = document.createElement('IFRAME');
+            iframe.setAttribute('src', url);
+            iframe.setAttribute('id', 'print-iframe');
+            iframe.setAttribute(
+                'style',
+                'position:absolute;width:1800px;height:0px;left:-500px;top:-500px;'
+            );
+            document.body.appendChild(iframe);
+            // iframe.contentWindow.focus();
+        }
+    },
+    print: () => {
+        const iframe = document.getElementById('print-iframe');
+        if (iframe) {
+            iframe.contentWindow.print();
+        }
+    },
+    destroy: () => {
+        const iframe = document.getElementById('print-iframe');
+        if (iframe) {
+            document.body.removeChild(iframe);
+        }
+    },
+};
