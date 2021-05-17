@@ -1,0 +1,62 @@
+.singleRow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+  }
+  
+  .tableWrap {
+    width: 100%;
+    position: relative;
+    height: 100%;
+  
+    .dropWrap {
+      position: absolute;
+      right: 0;
+      top: -52px;
+      display: inline-block;
+    }
+    :global(.ant-checkbox-wrapper) {
+      max-width: 120px;
+      .singleRow();
+    }
+  }
+  
+  .titleStyle {
+    padding: 0 0 10px 0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .leftColStyle {
+    height: 400px;
+    border-right: 1px solid rgb(232, 232, 232);
+    padding: 15px !important;
+    overflow: auto;
+  }
+  
+  .dragContent {
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+      cursor: move;
+      background: #e9f8f3;
+    }
+    .dragContentSpan {
+      flex: 1;
+      line-height: 24px;
+      .singleRow();
+    }
+    .textStyle {
+      font-size: 14px;
+      cursor: move;
+      padding-left: 5px;
+    }
+  }
+  
+  .dragContainer {
+    height: 350px;
+    overflow: auto;
+  }
+  
