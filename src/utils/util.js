@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 11:07:16
- * @LastEditTime: 2021-05-18 14:53:59
+ * @LastEditTime: 2021-05-18 14:58:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite-study\src\utils\util.js
@@ -227,6 +227,9 @@ export const throttle = (fn, threshhold, scope) => {
 }
 
 export const throttle2 = (fn, threshold, scope) => {
+    if (!fn instanceof Function) {
+        throw new TypeError('Expected a function')
+    }
     let timer;
     return function () {
         const context = scope || this
