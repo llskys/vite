@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 11:07:16
- * @LastEditTime: 2021-05-18 11:56:42
+ * @LastEditTime: 2021-05-18 14:53:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite-study\src\utils\util.js
@@ -192,17 +192,18 @@ export const printIframe = {
 /**
  * 防抖
  */
-export const debounce = (fn, threshhold) => {
-    if(!fn instanceof Function){
+export function debounce(fn, threshhold, scope) {
+    if (!fn instanceof Function) {
         throw new TypeError('Expected a function')
     }
     let timer = null
-    return ()=> {
-        if(timer){
+    return function () {
+        if (timer) {
             clearTimeout(timer)
         }
-        timer = setTimeout(()=>{
-            fn()
+        const context = scope || this
+        timer = setTimeout(function () {
+            fn.apply(context)
         }, threshhold)
     }
 }
@@ -210,42 +211,30 @@ export const debounce = (fn, threshhold) => {
 /**
  * 节流
  */
- export const throttle = (fn, threshhold) => {
-    if(!fn instanceof Function){
+export const throttle = (fn, threshhold, scope) => {
+    if (!fn instanceof Function) {
         throw new TypeError('Expected a function')
     }
     let lastTime = Date.now()
-    return () => {
+    return function () {
         const current = Date.now()
-        if(current - lastTime >= threshhold){
-            fn();
+        const context = scope || this
+        if (current - lastTime >= threshhold) {
             lastTime = current
+            fn.apply(context)
         }
     }
 }
 
-/**
- * 二合一，type区分类型
- */
- export const DebounceOrThrottle = (fn, threshhold, type) => {
-    if(!fn instanceof Function){
-        throw new TypeError('Expected a function')
-    }
-    let flag = type === 1 ? Date.now() : null
-    return () => {
-        if(type === 1) {
-            const current = Date.now()
-            if(current - lastTime >= threshhold){
-                fn();
-                lastTime = current
-            }
-        }else {
-            if(flag){
-                clearTimeout(flag)
-            }
-            flag = setTimeout(()=>{
-                fn();
-            },threshhold)
+export const throttle2 = (fn, threshold, scope) => {
+    let timer;
+    return function () {
+        const context = scope || this
+        if (!timer) {
+            timer = setTimeout(function () {
+                fn.apply(context);
+                timer = null;
+            }, threshold)
         }
     }
 }
