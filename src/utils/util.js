@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 11:07:16
- * @LastEditTime: 2021-05-14 14:07:01
+ * @LastEditTime: 2021-05-18 11:56:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite-study\src\utils\util.js
@@ -157,7 +157,6 @@ export const countDown = (time, step = 1) => {
 
 /**
  * 打印方法
- *
  */
 export const printIframe = {
     create: (path = '') => {
@@ -189,3 +188,64 @@ export const printIframe = {
         }
     },
 };
+
+/**
+ * 防抖
+ */
+export const debounce = (fn, threshhold) => {
+    if(!fn instanceof Function){
+        throw new TypeError('Expected a function')
+    }
+    let timer = null
+    return ()=> {
+        if(timer){
+            clearTimeout(timer)
+        }
+        timer = setTimeout(()=>{
+            fn()
+        }, threshhold)
+    }
+}
+
+/**
+ * 节流
+ */
+ export const throttle = (fn, threshhold) => {
+    if(!fn instanceof Function){
+        throw new TypeError('Expected a function')
+    }
+    let lastTime = Date.now()
+    return () => {
+        const current = Date.now()
+        if(current - lastTime >= threshhold){
+            fn();
+            lastTime = current
+        }
+    }
+}
+
+/**
+ * 二合一，type区分类型
+ */
+ export const DebounceOrThrottle = (fn, threshhold, type) => {
+    if(!fn instanceof Function){
+        throw new TypeError('Expected a function')
+    }
+    let flag = type === 1 ? Date.now() : null
+    return () => {
+        if(type === 1) {
+            const current = Date.now()
+            if(current - lastTime >= threshhold){
+                fn();
+                lastTime = current
+            }
+        }else {
+            if(flag){
+                clearTimeout(flag)
+            }
+            flag = setTimeout(()=>{
+                fn();
+            },threshhold)
+        }
+    }
+}
