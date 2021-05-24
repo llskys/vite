@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-18 15:11:48
- * @LastEditTime: 2021-05-24 09:37:43
+ * @LastEditTime: 2021-05-24 09:54:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite-study\src\event\event.js
@@ -16,7 +16,7 @@ const delay = id => {
     })
 }
 
-function RaceCondition() {
+function RaceConditions() {
     const [id, setId] = useState(0)
     
     useEffect(()=>{
@@ -37,4 +37,4 @@ function RaceCondition() {
     )
   }
   
-  export default RaceCondition
+  export default RaceConditions
