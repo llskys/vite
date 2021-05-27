@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import RecoilDemo from './recoil'
-import { ContextTest, Geti18n, LifeCycleContainer, PersonalInfoComponent, SetState, EventTest, RaceConditions } from './react-demo'
+import { ContextTest, Geti18n, LifeCycleContainer, PersonalInfoComponent, SetState, EventTest, RaceConditions, MemoTest } from './react-demo'
 // import MyPromise from './utils/myPromise'
 // import { debounce, throttle } from './utils/util' 
 
@@ -27,7 +27,8 @@ function App() {
       {/* <button onClick={throttle(obj.logName, 1000, obj)}>TEST</button>
       <button onClick={debounce(obj.logName, 1000, obj)}>TEST1</button> */}
       {/* <ContextTest /> */}
-      <RaceConditions />
+      {/* <RaceConditions /> */}
+      <MemoTest />
     </>
   )
 }
