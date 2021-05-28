@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import RecoilDemo from './recoil'
 import { ContextTest, Geti18n, LifeCycleContainer, PersonalInfoComponent, SetState, EventTest, RaceConditions, MemoTest } from './react-demo'
 // import MyPromise from './utils/myPromise'
-// import { debounce, throttle } from './utils/util' 
+import { debounce, throttle, bigIntSum } from './utils/util' 
 
 function App() {
   // const obj = {
@@ -28,7 +28,8 @@ function App() {
       <button onClick={debounce(obj.logName, 1000, obj)}>TEST1</button> */}
       {/* <ContextTest /> */}
       {/* <RaceConditions /> */}
-      <MemoTest />
+      {/* <MemoTest /> */}
+      <button onClick={()=>console.log(bigIntSum(String(Math.pow(2,54)),String(Math.pow(2,57))))}>TEST</button>
     </>
   )
 }
