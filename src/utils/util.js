@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 11:07:16
- * @LastEditTime: 2021-05-28 18:21:31
+ * @LastEditTime: 2021-05-31 09:09:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \coded:\vite-study\src\utils\util.js
@@ -242,30 +242,33 @@ export const throttle2 = (fn, threshold, scope) => {
     }
 }
 
+/**
+ * 两个大数相加，字符串入参
+ */
 export const bigIntSum = (str1, str2) => {
-    if(typeof str1 !=='string' || typeof str2 !=='string'){
-        throw new TypeError('params must be a string')
+    if (typeof str1 !== 'string' || typeof str2 !== 'string') {
+        throw new TypeError('Expected a string')
     }
     const result = []
     let morethan10 = false
     const len1 = str1.length
     const len2 = str2.length
-    if(len1>len2){
+    if (len1 > len2) {
         str2 = str2.padStart(len1, '0')
-    }else if(len1<len2){
+    } else if (len1 < len2) {
         str1 = str1.padStart(len2, '0')
     }
     const [str1List, str2List] = [str1.split(''), str2.split('')]
     const loopLength = str1List.length
-    for(let i = loopLength-1; i >=0 ; i--){
+    for (let i = loopLength - 1; i >= 0; i--) {
         const first = Number(str1List[i])
         const second = Number(str2List[i])
         let tempResult = first + second + Number(morethan10)
-        morethan10 = tempResult>=10
-        result.push(`${morethan10? tempResult-10 : tempResult}`)
+        morethan10 = tempResult >= 10
+        result.unshift(`${morethan10? tempResult-10 : tempResult}`)
     }
-    if(morethan10){
-        result.push('1')
+    if (morethan10) {
+        result.unshift('1')
     }
-    return result.reverse().join('')
+    return result.join('')
 }

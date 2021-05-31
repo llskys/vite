@@ -29,7 +29,7 @@ function App() {
       {/* <ContextTest /> */}
       {/* <RaceConditions /> */}
       {/* <MemoTest /> */}
-      <button onClick={()=>console.log(bigIntSum(String(Math.pow(2,54)),String(Math.pow(2,57))))}>TEST</button>
+      <button onClick={()=>console.log(bigIntSum('9007199254740992', '9007199254740992'))}>TEST</button>
     </>
   )
 }
