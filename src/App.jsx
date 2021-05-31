@@ -5,12 +5,14 @@ import { ContextTest, Geti18n, LifeCycleContainer, PersonalInfoComponent, SetSta
 import { debounce, throttle, bigIntSum } from './utils/util' 
 
 function App() {
+  // const name = '1'
   // const obj = {
   //   name: 'name1',
-  //   logName: function(){
-  //     console.log('111',this)
+  //   logName: ()=>{
+  //     console.log('111',this.name)
   //   }
   // }
+  // obj.logName()
   // const testMyPromise = () =>{
   //   const p1 = new MyPromise((resolve, reject) => {
   //     setTimeout(() => {
@@ -24,12 +26,12 @@ function App() {
     <>
       {/* <RecoilDemo /> */}
       {/* <Geti18n /> */}
-      {/* <button onClick={throttle(obj.logName, 1000, obj)}>TEST</button>
-      <button onClick={debounce(obj.logName, 1000, obj)}>TEST1</button> */}
+      {/* <button onClick={()=>console.log(this)}>TEST</button> */}
+      {/* <button onClick={debounce(obj.logName, 1000, obj)}>TEST1</button> */}
       {/* <ContextTest /> */}
       {/* <RaceConditions /> */}
       {/* <MemoTest /> */}
-      <button onClick={()=>console.log(bigIntSum('9007199254740992', '9007199254740992'))}>TEST</button>
+      {/* <button onClick={()=>console.log(bigIntSum('9007199254740992', '9007199254740992'))}>TEST</button> */}
     </>
   )
 }
