@@ -22,6 +22,8 @@ function App() {
   //   p1.then(res => console.log('111', res))
   //   // p1.then(res => console.log('222', res))
   // }
+
+
   return (
     <>
       {/* <RecoilDemo /> */}
@@ -31,7 +33,7 @@ function App() {
       {/* <ContextTest /> */}
       {/* <RaceConditions /> */}
       {/* <MemoTest /> */}
-      {/* <button onClick={()=>console.log(bigIntSum('9007199254740992', '9007199254740992'))}>TEST</button> */}
+      <button onClick={()=>console.log(bigIntSum('9007199254740992', '9007199254740992'))}>TEST</button>
     </>
   )
 }
